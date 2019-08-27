@@ -1,0 +1,56 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-color: #eeeeee;
+}
+
+.container{
+	width: 1300px;
+	margin: 0 auto;
+	background-color: white;
+	border: 1px solid blue;
+	border-radius: 12px;
+	margin-bottom: 3px;
+
+}	
+
+.content{
+	margin-left: 0px;
+	font-size: 35px;
+	color:blue;
+	
+}
+
+.box{
+	margin-top: 7px;
+	margin-right: 5px;
+	margin-left: 5px;
+	background-color: blue;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.heading{
+	margin-left: 0px;
+	font-size: 25px;
+	color:white;	
+}
+
+.subheadings{
+	margin-top: 15px;
+	font-size: 20px;
+	color: blue;
+	font-weight: 25px;
+	margin-bottom: 25px;
+}
+
+#formtext{
+	font-weight: 25px;
+	color: black;
+	font-size: 16px;
+}
