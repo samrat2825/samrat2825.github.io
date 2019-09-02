@@ -1,0 +1,771 @@
+<html lang="en">
+<head>
+  <title>Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/pure-min.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css"><!-- check it -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.validate.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap-datepicker3.css"/>
+
+ 
+  <style type="text/css">
+ 
+  .required{
+  
+    color:red;
+	font-weight:900;
+  
+  }
+  
+ .container {
+  background-color: white;
+
+    border: 1px solid rgb(51, 122, 183);
+    padding: 10px;
+    border-radius: 5px;
+
+  }
+  
+ body {
+	 background-color: #E0E0E0;
+ }
+  
+  .alert{
+   background-color: red;
+  }
+  
+input:invalid,
+select:invalid,
+textarea:invalid,
+radio:invalid,
+checkbox:invalid {
+ 
+  border-color: #ee5f5b;
+  &:focus {
+    border-color: darken(#ee5f5b, 10%);
+    .box-shadow(0 0 6px lighten(#ee5f5b, 20%));    
+  }
+}
+
+.error {
+    color:red;
+}
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; 
+}
+
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+  
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.titles
+{
+	color:rgb(0,0,255);font-size:16px;
+	
+}
+  
+  </style>
+  
+  
+</head>
+<body>
+<div class="container">
+<div class="form-horizontal">
+
+  <center>
+<div class="form-group col-md-1 col-sm-1 col-xs-3">
+<img src="/Forms/hrdclogo.jpg" alt="HRDC DTU LOGO" width="180px" height="93"><!-- check it -->
+</div>
+<div class="form-group col-md-6 col-sm-6 col-xs-9">
+&nbsp;&nbsp;<span style="color:Maroon; font-size:20px;"><b>Human Resource Development Centre </b></span><br/>
+&nbsp;&nbsp;<span style="color:Maroon; font-size:20px;"><b>मानव संसाधन विकास केंद्र </b></span><br/>
+&nbsp;&nbsp;<span style="color:#3498DB; font-size:20px;"><b>Delhi Technological University</b></span>
+</div>
+<div class="form-group col-md-5 col-sm-5">
+</div>
+</center>
+</div>
+</div>
+
+ 
+<div class="container">
+  <form  data-toggle="validator" role ="form" id="form_save" method="post" class="form-horizontal">
+ <div class="panel panel-primary">
+	 <div class="panel-heading"> <center><label style="font-size:18px">ONLINE APPLICATION FOR COURSES TO BE CONDUCTED AT HRDC, DTU IN 2019-20</label></div></div>
+ <div >
+  <div ><center><label class="titles">COURSE DETAILS</label></div>
+  <hr>
+  <div class="panel-body">
+	<div class="form-group col-md-6">
+		<label for="course_type" class="col-sm-6 control-label">Course Type:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<select class="form-control has-success has-feedback" id="course_type" name="course_type" required onchange="drop1(this.value);">
+			    <option value="">Select The Course Type</option>
+				<option value="1">Orientation Programme</option><option value="2">Refresher Courses</option><option value="4">Short term Courses</option><option value="5">Workshop</option>			</select>
+			<script>
+			function drop1(a){
+			$.ajax({
+           type: "POST",
+           url: "data.php", // the script where you handle the form input.
+           data: {key: a, type:"getList"}, // serializes the form's elements.
+           success: function(data)
+           {
+				//var obj = JSON.parse(data);
+               //alert(data); // show response from the php script.
+			   document.getElementById("course_name").innerHTML=data;
+           }
+         });
+			
+			}
+			</script>
+			<label id="error-course_type" style="color:red"></label>
+		</div>
+    </div>
+	<div class="form-group col-md-6">
+		<label for="course_name" class="col-sm-6 control-label" >Course Name:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<select class="form-control" id="course_name" name="course_name" required>
+			<option value="">Select The Course Name</option>
+			 <option value="1">HRDC</option><option value="2">HRDC</option><option value="4">HRDC</option><option value="5">HRDC</option>
+			</select>
+			<label id="error-course_name" style="color:red"></label>
+		</div>
+    </div>
+    </div>
+    </div>
+	 <div >
+	 <hr>
+	 <div > <center><label  class="titles">PERSONAL DETAILS</label></div>
+	 <hr>
+	  <div class="panel-body">
+	<div class="form-group col-md-6">
+		<label for="name" class="col-sm-6 control-label">Name:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" required>
+			<label id="error-name" style="color:red"></label>
+		</div>
+    </div>
+	<div class="form-group col-md-6">
+		<label for="dob" class="col-sm-6 control-label">D.O.B:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="date" id="dob" name="dob" class="form-control" placeholder="MM/DD/YYY"  required>
+						<label id="error-dob" style="color:red"></label>
+		</div>
+    </div>
+	<div class="row" style="padding-left:17%">
+	<div class="form-group col-md-4">
+	<label class="col-sm-12">Category  <span class="required">*</span></label>
+	<div class="col-sm-12">
+	 <label class="radio-inline"><input type="radio" name="category" id="optradio" value ="SC" required>SC</label>
+     <label class="radio-inline"><input type="radio" name="category" id="optradio" value ="ST" required>ST</label>
+     <label class="radio-inline"><input type="radio" name="category" id="optradio" value ="OBC" required>OBC</label>
+	 <label class="radio-inline"><input type="radio" name="category" id="optradio" value ="General" required>General</label>
+	 <!--input type="radio" name="category" id="optradio" value ="" checked="true" style="visibility:hidden"-->
+	 <label id="error-category" style="color:red"></label><br>
+	 <label for="category" class="error" style="display:none;">
+	</div>
+	</div>
+	
+	
+	<div class="form-group col-md-4" style="padding-left:7%">
+	<label class="col-sm-12">Sub Category</label>
+	<div class="col-sm-12">
+	
+      <input type="checkbox" name="sub_category" id="sub_category" value="Physically Challenged">Physically Challenged<br>
+ 
+      <input type="checkbox" name="sub_category" id="sub_category" value="Visually Challenged">Visually Challenged
+ 
+	 <!--input type="radio" name="sub_category" id="optradio1" value ="" checked="true" style="visibility:hidden"-->
+	 <label id="error-sub_category" style="color:red"></label><br>
+	 
+	</div>
+	</div>
+	
+	<div class="form-group col-md-4"  style="padding-left:10%">
+	<label class="col-sm-12">Gender</label>
+	<div class="col-sm-12">
+      <input type="radio" name="gender" id="gender" value="Male" required>Male
+      <input type="radio" name="gender" id="gender" value="Female" required>Female
+    
+	 <label for="gender" class="error" style="display:none;"><br>
+	 
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+	<div >
+	<hr>
+	<div > <center><label class="titles">CONTACT DETAILS</label></div>
+	<hr>
+	 <div class="panel-body">
+	<div class="form-group col-md-6">
+	<label for="college_address" class="col-sm-6 control-label">Institution/University/College Address:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<textarea id="college_address" name="college_address" class="form-control" placeholder="Enter Name" required></textarea>
+						<label id="error-college_address" style="color:red"></label><br/>
+		</div>
+		
+	<label for="state_first" class="col-sm-6 control-label">State:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+					<select class="form-control" id="state_first" name="state_first" required>
+		<option value="">Select State</option>
+<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+<option value="Daman and Diu">Daman and Diu</option>
+<option value="Delhi">Delhi</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Lakshadweep">Lakshadweep</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Orissa">Orissa</option>
+<option value="Pondicherry">Pondicherry</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttaranchal">Uttaranchal</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="West Bengal">West Bengal</option>
+</select>
+						<label id="error-state_first" style="color:red"></label><br/>
+		</div>
+
+    <label for="pin_first" class="col-sm-6 control-label">Pin:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="text" id="pin_first" name="pin_first" pattern="^\d{6}$" maxlength="6" class="form-control" placeholder="Enter Pin" required>
+						<label id="error-pin_first" style="color:red"></label><br/>
+		</div>
+    <label for="tel_first" class="col-sm-6 control-label">Telephone Number: <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="text" id="tel_first" name="tel_first" class="form-control" placeholder="Enter Telephone Number" required>
+						<label id="error-tel_first" style="color:red"></label><br/>
+		</div>
+	<label for="fax" class="col-sm-6 control-label">Fax:  </label>
+		<div class="col-sm-6">
+			<input type="text" id="fax" name="fax" class="form-control" placeholder="Enter Fax Number">
+			<label></label>
+		</div>	
+	<label for="web_url" class="col-sm-6 control-label">Web URL:</label>
+		<div class="col-sm-6">
+			<input type="text" id="web_url" name="web_url" class="form-control" placeholder="Enter Web URL">
+		</div>
+	
+	</div>
+	
+
+	<div class="form-group col-md-6">
+	<label for="mailing_address" class="col-sm-6 control-label">Mailing Address:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<textarea id="mailing_address" name="mailing_address" class="form-control" placeholder="Enter Mailing Address" required></textarea>
+						<label id="error-mailing_address" style="color:red"></label><br/>
+		</div>
+		
+	<label for="state_second" class="col-sm-6 control-label">State:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+		
+		<select class="form-control" id="state_second" name="state_second" required>
+		<option value="">Select State</option>
+		<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+<option value="Daman and Diu">Daman and Diu</option>
+<option value="Delhi">Delhi</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Lakshadweep">Lakshadweep</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Orissa">Orissa</option>
+<option value="Pondicherry">Pondicherry</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttaranchal">Uttaranchal</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="West Bengal">West Bengal</option>
+</select>
+						<label id="error-state_second" style="color:red"></label><br/>
+		</div>
+
+    <label for="pin_second" class="col-sm-6 control-label">Pin:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="text" id="pin_second" name="pin_second" pattern="^\d{6}$" maxlength="6" class="form-control" placeholder="Enter Pin" required>
+						<label id="error-pin_second" style="color:red"></label><br/>
+		</div>
+	<label for="mobile_number" class="col-sm-6 control-label">Mobile Number:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+		<input type="text" id="mobile_number" name="mobile_number" class="form-control" placeholder="Enter Mobile Number"  required>
+						<label id="error-mobile_number" style="color:red"></label><br/>
+		</div>
+	<label for="email" class="col-sm-6 control-label">email:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" maxlength="50" id="email" name="email" class="form-control" placeholder="Enter Email" required>
+						<label id="error-email" style="color:red"></label><br/>
+		</div>
+		<label for="tel_second" class="col-sm-6 control-label">Telephone Number:  </label>
+		<div class="col-sm-6">
+			<input type="text" id="tel_second" name="tel_second" class="form-control" placeholder="Enter Telephone Number">
+		</div>
+		<div class="col-sm-12">
+		<label><input type="checkbox"  onclick="myFunction()">    Same as Institution/University Address.</label></br>
+		</div>
+		
+	</div>
+	<!--<div class="form-group col-md-6">
+	<label class="checkbox-inline"><input type="checkbox" value="Yes" name="ugc_act" id="ugc_act"><b>Certify that College/Institution/University is Under Section 2(f) & 12-b of UGC Act.</b></label>
+	<label for="ugc_act" class="error" style="display:none;">
+	<label id="error-ugc_act" style="color:red"></label>
+	</div>-->
+	</div>
+     </div>
+  
+	  <hr>
+
+	 <div >
+	
+	 <div > <center><label class="titles">ACADEMIC CAREER DETAILS</label></div>
+	 <hr>
+<div class="panel-body">
+	 <div class="form-group col-md-6">
+	<label for="qualification" class="col-sm-6 control-label">Highest Qualification:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<select id="highest_qualification" name="highest_qualification" class="form-control" placeholder="Enter Highest Qualification" required>
+			    <option value="">Select the Highest Qualification</option>
+				<option value="Post Graduate">Post Graduation</option>
+				<option value="M.Phill">M.Phill</option>
+				<option value="PhD">PhD</option>
+				<option value="PDF">PDF</option>
+			</select>
+			<label id="error-highest_qualification" style="color:red"></label>
+		</div>
+		<label for="qualification_status" class="col-sm-6 control-label">Qualification Status:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<select class="form-control" id="qualification_status" name="qualification_status" required>
+			    <option value="">Select the Qualification Status</option>
+				<option value="awarded">Awarded</option>
+				<option value="persuing">Persuing</option>
+				<option value="submitted">Submitted</option>
+			</select>
+			<label id="error-qualification_status" style="color:red"></label>
+		</div>
+    
+	</div>
+	 <div class="form-group col-md-6">
+		<label for="total_experience" class="col-sm-6 control-label">Total Teaching Experience:  <span class="required">*</span></label>
+			<div class="col-sm-6">
+				<input type="text" id="total_experience" name="total_experience" class="form-control" placeholder="Enter Experience" required>
+				<label id="error-total_experience" style="color:red"></label>
+			</div>
+	<label for="specialization" class="col-sm-6 control-label">Subject/Specialization:  <span class="required">*</span></label>
+	     <div class="col-sm-6">
+			<input type="text" id="specialization" name="specialization" class="form-control" placeholder="Enter Specialization" required>
+			<label id="error-specialization" style="color:red"></label>
+		</div>
+	</div>
+</div>
+	 </div>
+	<hr>
+	 
+<div class="form-group col-md-12">
+	  <div >
+	 <div > <center><label class="titles">DETAILS OF EARLIER ATTENDED COURSES</label></div>
+	 <hr>
+	  <div class="panel-body">
+	  
+	  
+	  <div id="get-data" align="center">
+	  <table id="editable" class="pure-table pure-table-bordered col-sm-12">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Course Completion Month & Year</th>
+            <th>HRDC Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+			    <select class="form-control" id="course_name_first" name="course_name_first" >
+			    <option value="">Select the Course Name</option>
+				<option value="Orientation Programme">Orientation Programme</option>
+				<option value="Refresher Courses">Refresher Courses</option>
+				<option value="Short term Courses">Short term Courses</option>
+				<option value="Workshop">Workshop</option>
+			</select>
+						<label id="error-course_name_first" style="color:red"></label></td>
+            <td><input type="month" id="month_year" name="month_year" class="form-control" placeholder="Enter Month and Year" >
+						<label id="error-month_year" style="color:red"></label></td>
+            <td><input type="text" id="hrdc_name" name="hrdc_name" class="form-control" placeholder="Enter Hrdc name" >
+						<label id="error-hrdc_name" style="color:red"></label></td>
+        </tr>
+		<tr>
+            <td>
+			    <select class="form-control" id="course_name_second" name="course_name_second">
+			    <option value="">Select the Course Name</option>
+				<option value="Orientation Programme">Orientation Programme</option>
+				<option value="Refresher Courses">Refresher Courses</option>
+				<option value="Short term Courses">Short term Courses</option>
+				<option value="Workshop">Workshop</option>
+			</select>
+						<label id="error-course_name_second" style="color:red"></label></td>
+            <td><input type="month" id="month_year_second" name="month_year_second" class="form-control" placeholder="Enter Month and Year">
+						<label id="error-month_year_second" style="color:red"></label></td>
+            <td><input type="text" id="hrdc_name_second" name="hrdc_name_second" class="form-control" placeholder="Enter Hrdc name">
+						<label id="error-hrdc_name_second" style="color:red"></label></td>
+        </tr>
+		<tr>
+            <td>
+			    <select class="form-control" id="course_name_third" name="course_name_third">
+			    <option value="">Select the Course Name</option>
+				<option value="Orientation Programme">Orientation Programme</option>
+				<option value="Refresher Courses">Refresher Courses</option>
+				<option value="Short term Courses">Short term Courses</option>
+				<option value="Workshop">Workshop</option>
+			</select>
+						<label id="error-course_name_third" style="color:red"></label></td>
+            <td><input type="month" id="month_year_third" name="month_year_third" class="form-control" placeholder="Enter Month and Year">
+						<label id="error-month_year_third" style="color:red"></label></td>
+            <td><input type="text" id="hrdc_name_third" name="hrdc_name_third" class="form-control" placeholder="Enter Hrdc name">
+						<label id="error-hrdc_name_third" style="color:red"></label></td>
+        </tr><tr>
+            <td>
+			    <select class="form-control" id="course_name_fourth" name="course_name_fourth">
+			    <option value="">Select the Course Name</option>
+				<option value="Orientation Programme">Orientation Programme</option>
+				<option value="Refresher Courses">Refresher Courses</option>
+				<option value="Short term Courses">Short term Courses</option>
+				<option value="Workshop">Workshop</option>
+			</select>
+						<label id="error-course_name_fourth" style="color:red"></label></td>
+            <td><input type="month" id="month_year_fourth" name="month_year_fourth" class="form-control" placeholder="Enter Month and Year">
+						<label id="error-month_year_fourth" style="color:red"></label></td>
+            <td><input type="text" id="hrdc_name_fourth" name="hrdc_name_fourth" class="form-control" placeholder="Enter Hrdc name">
+						<label id="error-hrdc_name_fourth" style="color:red"></label></td>
+        </tr>
+    </tbody>
+</table>
+	  
+    </div>
+	</div>
+	
+	</div>
+	<hr>
+	
+		 <div >
+	 <div > <center><label class="titles">APPLICATION FEE DETAILS</label></div>
+	 <hr>
+	  <div class="panel-body">
+	  <span>Kindly fill the Application Fee Details below (<strong> non-refundable Rs. 500/-</strong> through an account payee bank draft in favour of the ________,<strong> Delhi Technological University,</strong> New Delhi, payable at the ________, DTU, and Code No. ____. On the reverse side of the draft please write the name of the course applied for, your own name and your address. <strong>We regret that cash/cheques/ P.O. etc. are not acceptable.</strong>).<br> 
+         <br/></span>
+	  
+	 <div class="form-group col-md-6">
+	<label for="draft_no" class="col-sm-6 control-label">Draft No.:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="text" id="draft_no" name="draft_no" class="form-control" pattern="^\d{6}$" placeholder="Enter Draft No." required>
+						<label id="error-draft_no" style="color:red"></label><br/>
+		</div> 
+		</div> 
+		<div class="form-group col-md-6">
+	<label for="issuing_bank" class="col-sm-6 control-label">Issuing Bank & Branch:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="text" id="issuing_bank" name="issuing_bank" class="form-control" placeholder="Enter Issuing Bank" required>
+						<label id="error-issuing_bank" style="color:red"></label><br/>
+		</div>
+		</div>
+		<div class="form-group col-md-6">
+	<label for="branch_code" class="col-sm-6 control-label">Branch Code:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="text" id="branch_code" name="branch_code" class="form-control" placeholder="Enter Branch Code" required>
+						<label id="error-branch_code" style="color:red"></label><br/>
+		</div>
+		</div>
+		<div class="form-group col-md-6">
+	<label for="issuing_date" class="col-sm-6 control-label">Issuing Date:  <span class="required">*</span></label>
+		<div class="col-sm-6">
+			<input type="date" id="issuing_date" name="issuing_date" class="form-control" placeholder="Enter Issuing Date" required>
+						<label id="error-issuing_date" style="color:red"></label><br/>
+		</div>
+		</div>
+	
+		</div>
+		</div>
+		
+		<hr>
+
+	<div class="form-group col-md-12">
+		<h5><strong>Please Note</strong></h5>
+		<ol>
+			<li>	The last date for receipt of an application form is 60 days before the start of the course.</li>
+			<li>	This application is valid for ongoing academic year 2017-2018 only.</li>
+			<li>	The application will be processed only when accompanied with the processing fee (photocopies of the draft are not accepted).</li>
+			<li>	Selected applicants will be intimated by E-mail/Letter after screening.</li>
+			<li>	Please bring a relieving order from the appropriate authority at the time of joining the course. No one shall be allowed to sit in the course without a relieving order.</li>
+			<li>	HRDC, DTU provides free hostel with mess facility to all outstation participants during the course.</li>
+			<li>	No TA will be paid to participants attending short term courses/workshops.</li>
+		</ol>
+
+		<ul>
+			<li>
+					Teachers working in universities and colleges that are included under Section 2(f) of the UGC Act, even though they may not yet be fit to be included under Section 12 (B), may be invited to participate in the Orientation Programmes and Refresher Programmes. The teachers of colleges that do not yet come within the purview of Section 12(B), but have been affiliated to a university for at least two years, will be permitted to participate in the programmes/courses. However, they won’t be paid TA/DA and other allowances for attending these courses.
+			</li>
+		</ul>
+
+	</div>	
+	 
+	 <div class="form-group col-md-12">
+	<label class="checkbox-inline"><input type="checkbox" name="terms" id="terms" value="Accepted" required><b><span class="required">*</span>I hereby declare that the entries made in this registration form are true to the best of my knowledge and belief.  </b></label></br>
+	<label id="error-terms" style="color:red"></label>
+	<label for="terms" class="error" style="display:none;">
+	</div>
+	
+	<input type="hidden" id="application_status_one" name="application_status_one" value="Application Registered, Receiving Pending">
+	
+	<div class="form-group col-md-12">
+	<button type="submit" id="save" class="btn btn-success" >Register</button>
+	<!--<a href="./log.php">
+	<input type="button" value="Click here If Already Registered"  class="btn btn-success" style="float:right">
+	</a>-->
+	</div>
+	
+	
+	<label style="visibility:hidden" id="error-mysql_errorf" name="error-mysql_errorf" ></label> 
+	<label style="visibility:hidden" id="error-mysql_error" name="error-mysql_error" ></label>
+	<label style="visibility:hidden" id="error-pin_first1" name="error-pin_first1" ></label>
+	<label style="visibility:hidden" id="error-pin_second1" name="error-pin_second1" ></label>
+	<label style="visibility:hidden" id="error-mobile_number1" name="error-mobile_number1" ></label>
+	<label style="visibility:hidden" id="error-email1" name="error-email1" ></label>
+ </form>
+
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">WARNING</h4>
+        </div>
+        <div class="modal-body">
+          <p id="submitted_1">Please check the form carefully. Once you submitted the form you cannot make any changes!</p>
+        </div>
+		
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="fsubmit">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+function myFunction() {
+var x1 = document.getElementById("college_address").value;
+    document.getElementById("mailing_address").innerHTML=x1;
+var x2 = document.getElementById("state_first").value;
+    document.getElementById("state_second").setAttribute("value", x2);
+var x3 = document.getElementById("pin_first").value;
+    document.getElementById("pin_second").setAttribute("value", x3); 
+var x4 = document.getElementById("tel_first").value;
+    document.getElementById("tel_second").setAttribute("value", x4);	
+}
+$(document).ready(function(){
+	
+
+
+    $("#form_save").validate({
+        rules: {
+            course_type: {
+                required: true
+            }, 
+			
+			course_name: {
+                required: true
+            }, 
+			
+			name: {
+                required: true
+            }, 
+			
+			dob: {
+                required: true
+            }, 
+			
+			category: {
+                required: true,
+				 minlength: 1
+            },
+			
+			
+			
+			college_address: {
+                required: true
+            }, 
+			state_first: {
+                required: true
+            }, 
+			
+			pin_first: {
+                required: true,
+				number: true
+            }, 
+			
+			tel_first: {
+                required: true
+            }, 
+			
+			mailing_address: {
+                required: true
+            },
+			
+			state_second: {
+                required: true
+            },
+			
+			pin_second: {
+                required: true,
+				number: true
+            },	
+			mobile_number: {
+                required: true,
+				laxEmail: true
+            },
+			email: {
+                required: true,
+				email: true
+            },
+			
+        },
+        messages: {
+            pin_first: {
+                required: "this field is required",
+                number: "This is Invalid Pin"
+            }, pin_second: {
+                required: "this field is required",
+                number: "This is Invalid Pin"
+            },
+            email: {
+                required: "Enter recipient name",
+                minlength: "Name should be at least {0} characters long" // <-- removed underscore
+            }
+        },
+        submitHandler: function (form) { // for demo
+			$('#myModal').modal('show'); // for demo
+            return false;  // for demo
+        }
+		
+    });
+
+    $("#fsubmit").click(function(e){
+
+        var i;
+        var url = "data.php"; // the script where you handle the form input.
+   
+		$.ajax({
+           type: "POST",
+           url: url,
+           data: $("#form_save").serialize(), // serializes the form's elements.
+           success: function(data)   
+           { 
+		   
+			var obj = JSON.parse(data);
+			window.location="./cnf.php";
+			}
+ });
+
+    e.preventDefault();
+    });
+	jQuery.validator.addMethod("laxEmail", function(value) {
+	var inputtxt = document.getElementById("mobile_number").value;
+	return /^[789]\d{9}$/.test(inputtxt);
+ }, "Please specify a valid phone number" );
+
+
+ 
+});
+</script>
+</body>
+</html>
