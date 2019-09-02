@@ -1244,7 +1244,7 @@ button {
   opacity: 1;
 }
 
-.hero-slider .slick-dots {
+/*.hero-slider .slick-dots {
   bottom: -81px;
   padding-left: 0;
   text-align: center;
@@ -1260,7 +1260,7 @@ button {
   position: relative;
   /* @include mobile-xs {
                     width: 50px;
-                } */
+                } 
 }
 
 @media (max-width: 1199px) {
@@ -1357,7 +1357,7 @@ button {
 .hero-slider .slick-dots li.slick-active::before {
   opacity: 1;
 }
-
+*/
 .hero-content h4 {
   letter-spacing: 2px;
 }
