@@ -1183,7 +1183,7 @@ button {
 
 /* 3. hero area */
 .hero-slider.slick-slider {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .hero-slider [data-animation-in] {
