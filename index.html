@@ -23,12 +23,68 @@
   <link rel="stylesheet" href="plugins/animate/animate.css">
   <!-- Aos -->
   <link rel="stylesheet" href="plugins/aos/aos.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Stylesheets -->
   <link href="css/style.css" rel="stylesheet">
   
   <!--Favicon-->
   <link rel="shortcut icon" href="images/dtu.png" type="image/x-icon">
   <link rel="icon" href="images/dtu.png" type="image/x-icon">
+  <style>
+
+		.icon-bar {
+		  position: fixed;
+		  top: 50%;
+		  -webkit-transform: translateY(-50%);
+		  -ms-transform: translateY(-50%);
+		  transform: translateY(-50%);
+		  z-index: 1000000;
+		}
+
+		.icon-bar a {
+		  display: block;
+		  text-align: center;
+		  padding: 16px;
+		  transition: all 0.3s ease;
+		  color: white;
+		  font-size: 20px;
+		}
+
+		.icon-bar a:hover {
+		  background-color: #000;
+		}
+
+		.facebook {
+		  background: #3B5998;
+		  color: white;
+		}
+
+		.twitter {
+		  background: #55ACEE;
+		  color: white;
+		}
+
+		.instagram {
+		  background: #f09433;
+		  color: white;
+		}
+		.toppy{
+			background: brown;
+			color: white;
+		}
+
+	/*	.linkedin {
+		  background: #007bb5;
+		  color: white;
+		}
+
+		.youtube {
+		  background: #bb0000;
+		  color: white;
+		} */
+</style>
 </head>
 
 <body>
@@ -61,10 +117,24 @@
 </div>
 <!--End Popup Section-->
 
+<!--Sticky Social Bar -->
+<div class="icon-bar">
+  <a class="fa fa-top toppy" href="index.html#top">
+            <i class="ti-angle-up"></i>
+  </a>	
+  <a href="http://www.facebook.com/HRDC.DTU" class="facebook"><i class="fa fa-facebook"></i></a>
+  <a href="http://www.instagram.com/hrdc_dtu" class="instagram"><i class="fa fa-instagram"></i></a> 
+  <a href="https://twitter.com/HRDC_DTU" class="twitter"><i class="fa fa-twitter"></i></a>  
+  <!--<a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a> 
+  <a href="#" class="youtube"><i class="fa fa-youtube"></i></a> -->
+</div>
+<!--End Sticky Social Bar-->
+
+
 <!-- navigation -->
 <header>
     <!-- top header -->
-    <div class="top-header">
+    <div class="top-header" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -108,8 +178,10 @@
                                 Home
                             </a>
                             <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="index.html#about">About</a>
-                                <a class="dropdown-item" href="index.html#category">Categories</a>
+                            	<a class="dropdown-item" href="index.html#director">From the Director's Desk</a>
+                            	<a class="dropdown-item" href="index.html#mission">Mission Statement</a>
+                            	<a class="dropdown-item" href="index.html#powers">Delegation of Powers</a>
+                                <a class="dropdown-item" href="index.html#about">About</a>                              
                                 <a class="dropdown-item" href="index.html#program">Programme Schedule</a>
                             </div>                       
                         </li>
@@ -118,9 +190,9 @@
                                 About Us
                             </a> 
                             <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="about.html#mission">Mission Statement</a>
-                                <a class="dropdown-item" href="about.html#director">From Director's Desk</a>
-                                <a class="dropdown-item" href="about.html#powers">Delegation of Powers</a>
+                               <a class="dropdown-item" href="about.html#intro">Introduction</a>
+                                <a class="dropdown-item" href="about.html#func">Functions</a>
+                                <!--<a class="dropdown-item" href="about.html#powers">Delegation of Powers</a> -->
                             </div>                           
                         </li>
                         <li class="nav-item dropdown">
@@ -129,9 +201,11 @@
                                 Events
                             </a>
                             <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="#">Orientation Programs</a>
-                                <a class="dropdown-item" href="#">Refresher Courses</a>
-                                <a class="dropdown-item" href="#">Workshops</a>
+                                 <a class="dropdown-item" href="events.html#ori">Orientation Programs</a>
+                                <a class="dropdown-item" href="events.html#ori">Refresher Courses</a>
+                                <a class="dropdown-item" href="events.html#ori">Workshops</a>
+                                <a class="dropdown-item" href="events.html#short">Short-Term Courses</a>
+                                <a class="dropdown-item" href="events.html#powers">Suggestive Areas</a>
                             </div>                            
                         </li>
                         <li class="nav-item dropdown">
@@ -140,8 +214,8 @@
                             </a>
                             <div class="dropdown-menu" >
                                 <a class="dropdown-item" href="team.html#acad">Academic Staff</a>
-                                <a class="dropdown-item" href="team.html#intern">Intern Developers</a>
-                               <!-- <a class="dropdown-item" href="homepage-3.html">Home Page 3</a> -->
+                                <a class="dropdown-item" href="team.html#non">Non-Teaching Staff</a>
+                                <a class="dropdown-item" href="team.html#intern">Intern Developers</a> 
                             </div>                            
                         </li>
                         <li class="nav-item dropdown">
@@ -756,7 +830,7 @@
                         <!-- social icon -->
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <a class="social-icon-outline" href="#">
+                                <a class="social-icon-outline" href="http://www.facebook.com/HRDC.DTU">
                                     <i class="ti-facebook"></i>
                                 </a>
                             </li>
