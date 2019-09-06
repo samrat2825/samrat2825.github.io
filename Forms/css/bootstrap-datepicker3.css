@@ -10,6 +10,12 @@
   border-radius: 4px;
   direction: ltr;
 }
+
+.logo_float{
+  float: left;
+   margin: 0 0 10px 10px;
+}
+
 .datepicker-inline {
   width: 220px;
 }
